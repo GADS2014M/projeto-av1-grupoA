@@ -29,6 +29,7 @@
 * Motorização: Float
 * Câmbio: String
 * Preço: Float
+
 -------------------------------------------------------------------------------------------------------------------
 ## Motocicleta
 * Entidade Motocicleta
@@ -40,6 +41,7 @@
 * Cilindrada: Int
 * Capacidade do Tanque: Int
 * Preço: Float
+
 ----------------------------------------------------------------------------------------------------------------
 ## Loja
 * Entidade Loja
@@ -47,6 +49,7 @@
 * Nome: String
 * Estoque de Carros: Array primitivo de carros
 * Estoque de Motocicletas: Array primitivo de motocicletas
+
 ------------------------------------------------------------------------------------------------------------------
 adicionarCarro(): Adiciona um carro ao inventário, recebendo os dados do usuário.
 adicionarMoto(): Adiciona uma moto ao inventário, recebendo os dados do usuário.
