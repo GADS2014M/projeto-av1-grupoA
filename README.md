@@ -51,13 +51,13 @@
 * Estoque de Motocicletas: Array primitivo de motocicletas
 
 ------------------------------------------------------------------------------------------------------------------
-adicionarCarro(): Adiciona um carro ao inventário, recebendo os dados do usuário.
-adicionarMoto(): Adiciona uma moto ao inventário, recebendo os dados do usuário.
-pesquisarCarro(...): Retorna um carro, utilizando os atributos passados, caso exista no
+* adicionarCarro(): Adiciona um carro ao inventário, recebendo os dados do usuário.
+* adicionarMoto(): Adiciona uma moto ao inventário, recebendo os dados do usuário.
+* pesquisarCarro(...): Retorna um carro, utilizando os atributos passados, caso exista no
 inventário.
-pesquisarMoto(...): Retorna uma moto, utilizando os atributos passados, caso exista no
+* pesquisarMoto(...): Retorna uma moto, utilizando os atributos passados, caso exista no
 inventário.
-buscarCarro(Chassi): Retorna um carro, caso exista no estoque um com o Chassi indicado.
-buscarMoto(Chassi): Retorna uma moto, caso exista no estoque uma com o Chassi indicado.
-listarEstoquedeMotos()
-listarEstoquedeCarros()
+* buscarCarro(Chassi): Retorna um carro, caso exista no estoque um com o Chassi indicado.
+* buscarMoto(Chassi): Retorna uma moto, caso exista no estoque uma com o Chassi indicado.
+* listarEstoquedeMotos()
+* listarEstoquedeCarros()
