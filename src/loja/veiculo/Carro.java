@@ -7,8 +7,8 @@ public class Carro {
 	private String modelo;
 	private int tipo;
 	private int cor;
-	private float motorização;
-	private int câmbio;
+	private float motorizacao;
+	private int cambio;
 	private float valorCarro;
 	
 	public float getValorCarro() {
@@ -52,18 +52,18 @@ public class Carro {
 		this.cor = cor;
 	}
 	
-	public float getMotorização() {
-		return motorização;
+	public float getMotorizacao() {
+		return motorizacao;
 	}
-	public void setMotorização(float motorização) {
-		this.motorização = motorização;
+	public void setMotorizacao(float motorizacao) {
+		this.motorizacao = motorizacao;
 	}
 	
-	public int getCâmbio() {
-		return câmbio;
+	public int getCambio() {
+		return cambio;
 	}
-	public void setCâmbio(int câmbio) {
-		this.câmbio = câmbio;
+	public void setCambio(int cambio) {
+		this.cambio = cambio;
 	}
 	
 	
