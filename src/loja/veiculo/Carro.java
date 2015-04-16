@@ -1,71 +1,35 @@
 package loja.veiculo;
 
+import loja.Loja;
+import loja.veiculo.types.Cambio;
+import loja.veiculo.types.Chassi;
+import loja.veiculo.types.Cor;
+import loja.veiculo.types.Modelo;
+import loja.veiculo.types.Montadora;
+import loja.veiculo.types.Tipo;
+
 public class Carro {
 	
-	private String chassi;
-	private int montadora;
-	private String modelo;
-	private int tipo;
-	private int cor;
+	/**
+	 * Classe Carro Define um carro
+	 *@author isvaldo,Yan
+	 *@param chassi enumeração para chassi
+	 *@param montadora enumeração para montadora
+	 *@param modelo enumeração para modelo
+	 *@param tipo enumeração para tipo
+	 *@param cor enumeração para cor
+	 *@param motorizacao float delimitando motorizacao
+	 *@param cambio enumeração para cambio
+	 *@param valor valor do carro
+	 * */
+	
+	private Chassi chassi;
+	private Montadora montadora;
+	private Modelo modelo;
+	private Tipo tipo;
+	private Cor cor;
 	private float motorizacao;
-	private int cambio;
-	private float valorCarro;
-	
-	public float getValorCarro() {
-		return valorCarro;
-	}
-	public void setValorCarro(float valorCarro) {
-		this.valorCarro = valorCarro;
-	}
-	public String getChassi() {
-		return chassi;
-	}
-	public void setChassi(String chassi) {
-		this.chassi = chassi;
-	}
-	
-	public int getMontadora() {
-		return montadora;
-	}
-	public void setMontadora(int montadora) {
-		this.montadora = montadora;
-	}
-	
-	public String getModelo() {
-		return modelo;
-	}
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
-	}
-	
-	public int getTipo() {
-		return tipo;
-	}
-	public void setTipo(int tipo) {
-		this.tipo = tipo;
-	}
-	
-	public int getCor() {
-		return cor;
-	}
-	public void setCor(int cor) {
-		this.cor = cor;
-	}
-	
-	public float getMotorizacao() {
-		return motorizacao;
-	}
-	public void setMotorizacao(float motorizacao) {
-		this.motorizacao = motorizacao;
-	}
-	
-	public int getCambio() {
-		return cambio;
-	}
-	public void setCambio(int cambio) {
-		this.cambio = cambio;
-	}
-	
-	
-	
+	private Cambio cambio;
+	private float valor;
+
 }

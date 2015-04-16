@@ -1,70 +1,33 @@
 package loja.veiculo;
 
+import loja.veiculo.types.Chassi;
+import loja.veiculo.types.Cor;
+import loja.veiculo.types.Modelo;
+import loja.veiculo.types.Montadora;
+import loja.veiculo.types.Tipo;
+
 public class Motocicleta {
 	
-	private String chassi;
-	private int montadora;
-	private String modelo;
-	private int tipo;
-	private int cor;
-	private float cilindrada;
-	private int capacidadeDoTanque;
-	private float valorMoto;
+	/**
+	 * Classe Carro Define um carro
+	 *@author isvaldo,Yan
+	 *@param chassi enumeração para chassi
+	 *@param montadora enumeração para montadora
+	 *@param modelo enumeração para modelo
+	 *@param tipo enumeração para tipo
+	 *@param cor enumeração para cor
+	 *@param cilindrada inteiro para cilindrada
+	 *@param cambio enumeração para cambio
+	 *@param capacidadeDoTanque valor 0-127L para tanque
+	 *@param valor preço da moto
+	 * */
 	
-	public String getChassi() {
-		return chassi;
-	}
-	public void setChassi(String chassi) {
-		this.chassi = chassi;
-	}
-	
-	public int getMontadora() {
-		return montadora;
-	}
-	public void setMontadora(int montadora) {
-		this.montadora = montadora;
-	}
-	
-	public String getModelo() {
-		return modelo;
-	}
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
-	}
-	
-	public int getTipo() {
-		return tipo;
-	}
-	public void setTipo(int tipo) {
-		this.tipo = tipo;
-	}
-	
-	public int getCor() {
-		return cor;
-	}
-	public void setCor(int cor) {
-		this.cor = cor;
-	}
-	
-	public float getCilindrada() {
-		return cilindrada;
-	}
-	public void setCilindrada(float cilindrada) {
-		this.cilindrada = cilindrada;
-	}
-	
-	public int getCapacidadeDoTanque() {
-		return capacidadeDoTanque;
-	}
-	public void setCapacidadeDoTanque(int capacidadeDoTanque) {
-		this.capacidadeDoTanque = capacidadeDoTanque;
-	}
-	
-	public float getValorMoto() {
-		return valorMoto;
-	}
-	public void setValorMoto(float valorMoto) {
-		this.valorMoto = valorMoto;
-	}
-
+	private Chassi chassi;
+	private Montadora montadora;
+	private Modelo modelo;
+	private Tipo tipo;
+	private Cor cor;
+	private int cilindrada;
+	private byte capacidadeDoTanque;
+	private float valor;
 }
