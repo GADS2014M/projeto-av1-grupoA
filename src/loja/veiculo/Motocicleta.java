@@ -8,7 +8,6 @@ import loja.veiculo.types.Tipo;
 
 public class Motocicleta {
 	
-	
 	/**
 	 * Classe Carro Define um carro
 	 *@author isvaldo,Yan
