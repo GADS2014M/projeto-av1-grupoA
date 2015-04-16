@@ -10,7 +10,7 @@ public class Motocicleta {
 	
 	
 	/**
-	 * Classe Carro Define um carro
+	 * Classe Motocicleta Define uma motocicleta
 	 *@author isvaldo,Yan
 	 *@param chassi enumeração para chassi
 	 *@param montadora enumeração para montadora
