@@ -41,6 +41,19 @@ public class Loja {
 	}
 	
 	
+	/**
+	 * adicionaMoto Adiciona objeto carro a lista
+	 * primitiva de Motocicleta
+	 * @param moto, objeto Motocicleta
+	 * @param p, posição a ser inserida, caso exista é sobrescrito
+	 * */
+	
+	public void adicionaMarro(Motocicleta moto, int p) {
+		// TODO filtro de erros para p invalida
+		this.motocicletas[p] = moto; 
+	}
+	
+	
 	
 	// Get e Set
 	public String getEndereco() {
