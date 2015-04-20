@@ -54,7 +54,6 @@ public class Loja {
 	}
 	
 	
-	
 	// Get e Set
 	public String getEndereco() {
 		return endereco;
