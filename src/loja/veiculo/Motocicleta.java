@@ -53,7 +53,7 @@ public class Motocicleta {
 			Cor cor,                   
 			int cilindrada,            
 			byte capacidadeDoTanque,   
-			float valor   ) {
+			float valor) {
 		//TODO adicionar filtros
 		Motocicleta moto = new Motocicleta();
 		moto.setChassi(chassi);

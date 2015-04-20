@@ -1,7 +1,10 @@
 package loja;
 
+import java.util.Scanner;
+
 import loja.veiculo.Carro;
 import loja.veiculo.Motocicleta;
+import loja.veiculo.types.Chassi;
 
 public class Loja {
 	/**
@@ -34,12 +37,10 @@ public class Loja {
 	 * @param carro, objeto carro
 	 * @param p, posição a ser inserida, caso exista é sobrescrito
 	 * */
-	
-	public void adicionaCarro(Carro carro, int p) {
+	private void adicionaCarro(Carro carro, int p) {
 		// TODO filtro de erros para p invalida
 		this.carros[p] = carro; 
 	}
-	
 	
 	/**
 	 * adicionaMoto Adiciona objeto carro a lista
@@ -48,11 +49,49 @@ public class Loja {
 	 * @param p, posição a ser inserida, caso exista é sobrescrito
 	 * */
 	
-	public void adicionaMarro(Motocicleta moto, int p) {
+	private void adicionaMoto(Motocicleta moto, int p) {
 		// TODO filtro de erros para p invalida
 		this.motocicletas[p] = moto; 
 	}
 	
+	public void adicionaMotoUsuario(){
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Escolha um chassi disponivel");
+		this.mostraOpcao(Chassi.class);
+		System.out.println("Informe a ID(numeral)");
+		Chassi chassi = Chassi.valueOf(getGenericsEnumByCode(Chassi.class,sc.nextInt()));
+		System.out.println("você informou "+chassi);
+	}
+	public static void main(String[] args) {
+		new Loja().adicionaMotoUsuario();
+	}
+
+	/**
+	 * mostraOpcao mostra opções de um enum de forma generica
+	 * @param enumClass classe de um enum
+	 */
+	private <T extends Enum<T>> void mostraOpcao(Class<T> enumClass) {
+	    for (Enum<T> item : enumClass.getEnumConstants()) {
+	    	// Mostra valor -> representacao
+	        System.out.println(item.ordinal()+"->"+item.toString());
+	    }
+	}
+
+	
+	/**
+	 * getGenericsEnumByCode retorna um enum generico pelo codigo
+	 * @param enumClass classe de um enum
+	 * @param code valor que apontado pelo enum
+	 */
+	private  <T extends Enum<T>> String getGenericsEnumByCode(Class<T> enumClass,int code) {
+	    for (Enum<T> item : enumClass.getEnumConstants()) {
+	    	if (item.ordinal() ==code){
+	    		return item.toString();
+	    	}
+	    }
+	    //@TODO adicionar filtros
+	    return "not found";
+	}
 	
 	// Get e Set
 	public String getEndereco() {

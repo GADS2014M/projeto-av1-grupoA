@@ -53,7 +53,6 @@ public class Carro {
 			float motorizacao,   
 			Cambio cambio,       
 			float valor) {
-		
 		// TODO Colocar filtros
 		Carro carro = new Carro();
 		carro.setChassi(chassi);
