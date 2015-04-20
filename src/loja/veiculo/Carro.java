@@ -1,6 +1,5 @@
 package loja.veiculo;
 
-import loja.Loja;
 import loja.veiculo.types.Cambio;
 import loja.veiculo.types.Chassi;
 import loja.veiculo.types.Cor;
