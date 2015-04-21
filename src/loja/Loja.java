@@ -60,9 +60,19 @@ public class Loja {
 		this.motocicletas[p] = moto; 
 	}
 	
-	public void adicionaMotoUsuario(){
+	public void adicionaCarroByTerminal(){
 		Chassi chassi = getChassi();
-		
+		Montadora montadora = getMontadora();
+		Modelo modelo = getModelo();
+		Tipo tipo = getTipo();
+		Cor cor = getCor();
+		System.out.println("Qual motorização ?");
+		float motorizacao = this.sc.nextFloat();
+		Cambio cambio =getCambio();
+		System.out.println("Qual valor do carro?");
+		float valor = this.sc.nextFloat();
+		Carro carro =  Carro.criaCarro(chassi, montadora, modelo, tipo, cor, motorizacao, cambio, valor);
+		adicionaCarro(carro,0);
 	}
 
 	/**
@@ -100,7 +110,7 @@ public class Loja {
 	 */
 	private Modelo getModelo() {
 		//@TODO colocar filtros
-		System.out.println("Escolha uma Modelo disponivel");
+		System.out.println("Escolha um Modelo disponivel");
 		this.mostraOpcao(Modelo.class);
 		System.out.println("Informe uma ID(numeral)");
 		return Modelo.valueOf(getGenericsEnumByCode(Modelo.class,this.sc.nextInt()));
@@ -113,7 +123,7 @@ public class Loja {
 	 */
 	private Tipo getTipo() {
 		//@TODO colocar filtros
-		System.out.println("Escolha uma Tipo disponivel");
+		System.out.println("Escolha um Tipo disponivel");
 		this.mostraOpcao(Tipo.class);
 		System.out.println("Informe uma ID(numeral)");
 		return Tipo.valueOf(getGenericsEnumByCode(Tipo.class,this.sc.nextInt()));
@@ -139,7 +149,7 @@ public class Loja {
 	 */
 	private Cambio getCambio() {
 		//@TODO colocar filtros
-		System.out.println("Escolha uma Cambio disponivel");
+		System.out.println("Escolha um Cambio disponivel");
 		this.mostraOpcao(Cambio.class);
 		System.out.println("Informe uma ID(numeral)");
 		return Cambio.valueOf(getGenericsEnumByCode(Cambio.class,this.sc.nextInt()));
@@ -150,7 +160,7 @@ public class Loja {
 	
 	
 	public static void main(String[] args) {
-		new Loja().adicionaMotoUsuario();
+		new Loja().adicionaCarroByTerminal();;
 	}
 
 	/**
@@ -177,7 +187,8 @@ public class Loja {
 	    	}
 	    }
 	    //@TODO adicionar filtros
-	    return "not found";
+	    System.out.println("Valor não encotnrado");
+	    return "Erro";
 	}
 	
 	// Get e Set
