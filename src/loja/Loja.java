@@ -5,6 +5,9 @@ import java.util.Scanner;
 import loja.veiculo.Carro;
 import loja.veiculo.Motocicleta;
 import loja.veiculo.types.Chassi;
+import loja.veiculo.types.Modelo;
+import loja.veiculo.types.Montadora;
+import loja.veiculo.types.Tipo;
 
 public class Loja {
 	/**
@@ -22,6 +25,7 @@ public class Loja {
 	private Motocicleta[] motocicletas;
 	private static final int CARROESTOQUE = 10;
 	private static final int MOTOESTOQUE = 10;
+	private Scanner sc = new Scanner(System.in);;
 
 	/**
 	 * Construtor de Loja
@@ -55,13 +59,66 @@ public class Loja {
 	}
 	
 	public void adicionaMotoUsuario(){
-		Scanner sc = new Scanner(System.in);
+		Chassi chassi = getChassi();
+		
+	}
+
+	/**
+	 * getChassi
+	 * Mostra uma lista valida de chassi
+	 * @return Objeto chassi
+	 */
+	private Chassi getChassi() {
+		//@TODO colocar filtros
 		System.out.println("Escolha um chassi disponivel");
 		this.mostraOpcao(Chassi.class);
-		System.out.println("Informe a ID(numeral)");
-		Chassi chassi = Chassi.valueOf(getGenericsEnumByCode(Chassi.class,sc.nextInt()));
-		System.out.println("você informou "+chassi);
+		System.out.println("Informe uma ID(numeral)");
+		return Chassi.valueOf(getGenericsEnumByCode(Chassi.class,this.sc.nextInt()));
+		
 	}
+	
+	/**
+	 * getMontadora
+	 * Mostra uma lista valida de Montadora
+	 * @return Objeto Montadora
+	 */
+	private Montadora getMontadora() {
+		//@TODO colocar filtros
+		System.out.println("Escolha uma Montadora disponivel");
+		this.mostraOpcao(Montadora.class);
+		System.out.println("Informe uma ID(numeral)");
+		return Montadora.valueOf(getGenericsEnumByCode(Montadora.class,this.sc.nextInt()));
+		
+	}
+	
+	/**
+	 * getModelo
+	 * Mostra uma lista valida de Modelo
+	 * @return Objeto Modelo
+	 */
+	private Modelo getModelo() {
+		//@TODO colocar filtros
+		System.out.println("Escolha uma Montadora disponivel");
+		this.mostraOpcao(Modelo.class);
+		System.out.println("Informe uma ID(numeral)");
+		return Modelo.valueOf(getGenericsEnumByCode(Modelo.class,this.sc.nextInt()));
+	}
+	
+	/**
+	 * getTipo
+	 * Mostra uma lista valida de Tipo
+	 * @return Objeto Tipo
+	 */
+	private Tipo getTipo() {
+		//@TODO colocar filtros
+		System.out.println("Escolha uma Montadora disponivel");
+		this.mostraOpcao(Tipo.class);
+		System.out.println("Informe uma ID(numeral)");
+		return Tipo.valueOf(getGenericsEnumByCode(Tipo.class,this.sc.nextInt()));
+	}
+	
+	
+	
 	public static void main(String[] args) {
 		new Loja().adicionaMotoUsuario();
 	}
