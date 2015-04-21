@@ -27,7 +27,7 @@ public class Loja {
 	private Motocicleta[] motocicletas;
 	private static final int CARROESTOQUE = 10;
 	private static final int MOTOESTOQUE = 10;
-	private Scanner sc = new Scanner(System.in);;
+	private Scanner sc = new Scanner(System.in);
 
 	/**
 	 * Construtor de Loja
