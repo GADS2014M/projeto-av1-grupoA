@@ -4,7 +4,9 @@ import java.util.Scanner;
 
 import loja.veiculo.Carro;
 import loja.veiculo.Motocicleta;
+import loja.veiculo.types.Cambio;
 import loja.veiculo.types.Chassi;
+import loja.veiculo.types.Cor;
 import loja.veiculo.types.Modelo;
 import loja.veiculo.types.Montadora;
 import loja.veiculo.types.Tipo;
@@ -98,7 +100,7 @@ public class Loja {
 	 */
 	private Modelo getModelo() {
 		//@TODO colocar filtros
-		System.out.println("Escolha uma Montadora disponivel");
+		System.out.println("Escolha uma Modelo disponivel");
 		this.mostraOpcao(Modelo.class);
 		System.out.println("Informe uma ID(numeral)");
 		return Modelo.valueOf(getGenericsEnumByCode(Modelo.class,this.sc.nextInt()));
@@ -111,11 +113,39 @@ public class Loja {
 	 */
 	private Tipo getTipo() {
 		//@TODO colocar filtros
-		System.out.println("Escolha uma Montadora disponivel");
+		System.out.println("Escolha uma Tipo disponivel");
 		this.mostraOpcao(Tipo.class);
 		System.out.println("Informe uma ID(numeral)");
 		return Tipo.valueOf(getGenericsEnumByCode(Tipo.class,this.sc.nextInt()));
 	}
+	
+	/**
+	 * getCor
+	 * Mostra uma lista valida de Cor
+	 * @return Objeto Cor
+	 */
+	private Cor getCor() {
+		//@TODO colocar filtros
+		System.out.println("Escolha uma Cor disponivel");
+		this.mostraOpcao(Cor.class);
+		System.out.println("Informe uma ID(numeral)");
+		return Cor.valueOf(getGenericsEnumByCode(Cor.class,this.sc.nextInt()));
+	}
+	
+	/**
+	 * getCambio
+	 * Mostra uma lista valida de Cambio
+	 * @return Objeto Cambio
+	 */
+	private Cambio getCambio() {
+		//@TODO colocar filtros
+		System.out.println("Escolha uma Cambio disponivel");
+		this.mostraOpcao(Cambio.class);
+		System.out.println("Informe uma ID(numeral)");
+		return Cambio.valueOf(getGenericsEnumByCode(Cambio.class,this.sc.nextInt()));
+	}
+	
+	
 	
 	
 	
