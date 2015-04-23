@@ -1,5 +1,6 @@
 package loja;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import loja.veiculo.Carro;
@@ -23,18 +24,15 @@ public class Loja {
 	
 	private String endereco;
 	private String nome;
-	private Carro[] carros;
-	private Motocicleta[] motocicletas;
-	private static final int CARROESTOQUE = 10;
-	private static final int MOTOESTOQUE = 10;
+	private ArrayList<Carro> carros = new ArrayList<>();
+	private ArrayList<Motocicleta> motocicletas = new ArrayList<>();
 	private Scanner sc = new Scanner(System.in);
 
 	/**
 	 * Construtor de Loja
-	 * Inicia os valores default para arrays primitivas
 	 * */
-	Loja(){
-		this.carros = new Carro[CARROESTOQUE];
+		Loja(){
+			
 	}
 
 	/**
@@ -43,9 +41,9 @@ public class Loja {
 	 * @param carro, objeto carro
 	 * @param p, posição a ser inserida, caso exista é sobrescrito
 	 * */
-	private void adicionaCarro(Carro carro, int p) {
+	private void adicionaCarro(Carro carro) {
 		// TODO filtro de erros para p invalida
-		this.carros[p] = carro; 
+		this.carros.add(carro);
 	}
 	
 	/**
@@ -55,9 +53,9 @@ public class Loja {
 	 * @param p, posição a ser inserida, caso exista é sobrescrito
 	 * */
 	
-	private void adicionaMoto(Motocicleta moto, int p) {
+	private void adicionaMoto(Motocicleta moto) {
 		// TODO filtro de erros para p invalida
-		this.motocicletas[p] = moto; 
+		this.motocicletas.add(moto);
 	}
 	
 	public void adicionaCarroByTerminal(){
@@ -72,7 +70,7 @@ public class Loja {
 		System.out.println("Qual valor do carro?");
 		float valor = this.sc.nextFloat();
 		Carro carro =  Carro.criaCarro(chassi, montadora, modelo, tipo, cor, motorizacao, cambio, valor);
-		adicionaCarro(carro,0);
+		adicionaCarro(carro);
 	}
 
 	/**
@@ -191,6 +189,24 @@ public class Loja {
 	    return "Erro";
 	}
 	
+	
+	
+	/**/
+	private void pesquisaCarro(Chassi chassi,
+			Montadora montadora,
+			Modelo modelo,
+			Tipo tipo,
+			Cor cor,             
+			float motorizacao,   
+			Cambio cambio,       
+			float valor) {
+		
+		
+		
+		
+
+	}
+	
 	// Get e Set
 	public String getEndereco() {
 		return endereco;
@@ -208,29 +224,23 @@ public class Loja {
 		this.nome = nome;
 	}
 
-	public Carro[] getCarros() {
+	public ArrayList<Carro> getCarros() {
 		return carros;
 	}
 
-	public void setCarros(Carro[] carros) {
+	public void setCarros(ArrayList<Carro> carros) {
 		this.carros = carros;
 	}
 
-	public Motocicleta[] getMotocicletas() {
+	public ArrayList<Motocicleta> getMotocicletas() {
 		return motocicletas;
 	}
 
-	public void setMotocicletas(Motocicleta[] motocicletas) {
+	public void setMotocicletas(ArrayList<Motocicleta> motocicletas) {
 		this.motocicletas = motocicletas;
 	}
 
-	public static int getCarroestoque() {
-		return CARROESTOQUE;
-	}
-
-	public static int getMotoestoque() {
-		return MOTOESTOQUE;
-	}
+	
 	// fim get  e set
 	
 	
