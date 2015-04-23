@@ -66,9 +66,7 @@ public class Motocicleta {
 		return moto;
 	}
 	
-               
-	
-	
+              
 	// get e set
 	public Chassi getChassi() {
 		return chassi;

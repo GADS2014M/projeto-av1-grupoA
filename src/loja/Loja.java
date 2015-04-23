@@ -4,7 +4,12 @@ import java.util.Scanner;
 
 import loja.veiculo.Carro;
 import loja.veiculo.Motocicleta;
+import loja.veiculo.types.Cambio;
 import loja.veiculo.types.Chassi;
+import loja.veiculo.types.Cor;
+import loja.veiculo.types.Modelo;
+import loja.veiculo.types.Montadora;
+import loja.veiculo.types.Tipo;
 
 public class Loja {
 	/**
@@ -22,6 +27,7 @@ public class Loja {
 	private Motocicleta[] motocicletas;
 	private static final int CARROESTOQUE = 10;
 	private static final int MOTOESTOQUE = 10;
+	private Scanner sc = new Scanner(System.in);
 
 	/**
 	 * Construtor de Loja
@@ -54,16 +60,107 @@ public class Loja {
 		this.motocicletas[p] = moto; 
 	}
 	
-	public void adicionaMotoUsuario(){
-		Scanner sc = new Scanner(System.in);
+	public void adicionaCarroByTerminal(){
+		Chassi chassi = getChassi();
+		Montadora montadora = getMontadora();
+		Modelo modelo = getModelo();
+		Tipo tipo = getTipo();
+		Cor cor = getCor();
+		System.out.println("Qual motorização ?");
+		float motorizacao = this.sc.nextFloat();
+		Cambio cambio =getCambio();
+		System.out.println("Qual valor do carro?");
+		float valor = this.sc.nextFloat();
+		Carro carro =  Carro.criaCarro(chassi, montadora, modelo, tipo, cor, motorizacao, cambio, valor);
+		adicionaCarro(carro,0);
+	}
+
+	/**
+	 * getChassi
+	 * Mostra uma lista valida de chassi
+	 * @return Objeto chassi
+	 */
+	private Chassi getChassi() {
+		//@TODO colocar filtros
 		System.out.println("Escolha um chassi disponivel");
 		this.mostraOpcao(Chassi.class);
-		System.out.println("Informe a ID(numeral)");
-		Chassi chassi = Chassi.valueOf(getGenericsEnumByCode(Chassi.class,sc.nextInt()));
-		System.out.println("você informou "+chassi);
+		System.out.println("Informe uma ID(numeral)");
+		return Chassi.valueOf(getGenericsEnumByCode(Chassi.class,this.sc.nextInt()));
+		
 	}
+	
+	/**
+	 * getMontadora
+	 * Mostra uma lista valida de Montadora
+	 * @return Objeto Montadora
+	 */
+	private Montadora getMontadora() {
+		//@TODO colocar filtros
+		System.out.println("Escolha uma Montadora disponivel");
+		this.mostraOpcao(Montadora.class);
+		System.out.println("Informe uma ID(numeral)");
+		return Montadora.valueOf(getGenericsEnumByCode(Montadora.class,this.sc.nextInt()));
+		
+	}
+	
+	/**
+	 * getModelo
+	 * Mostra uma lista valida de Modelo
+	 * @return Objeto Modelo
+	 */
+	private Modelo getModelo() {
+		//@TODO colocar filtros
+		System.out.println("Escolha um Modelo disponivel");
+		this.mostraOpcao(Modelo.class);
+		System.out.println("Informe uma ID(numeral)");
+		return Modelo.valueOf(getGenericsEnumByCode(Modelo.class,this.sc.nextInt()));
+	}
+	
+	/**
+	 * getTipo
+	 * Mostra uma lista valida de Tipo
+	 * @return Objeto Tipo
+	 */
+	private Tipo getTipo() {
+		//@TODO colocar filtros
+		System.out.println("Escolha um Tipo disponivel");
+		this.mostraOpcao(Tipo.class);
+		System.out.println("Informe uma ID(numeral)");
+		return Tipo.valueOf(getGenericsEnumByCode(Tipo.class,this.sc.nextInt()));
+	}
+	
+	/**
+	 * getCor
+	 * Mostra uma lista valida de Cor
+	 * @return Objeto Cor
+	 */
+	private Cor getCor() {
+		//@TODO colocar filtros
+		System.out.println("Escolha uma Cor disponivel");
+		this.mostraOpcao(Cor.class);
+		System.out.println("Informe uma ID(numeral)");
+		return Cor.valueOf(getGenericsEnumByCode(Cor.class,this.sc.nextInt()));
+	}
+	
+	/**
+	 * getCambio
+	 * Mostra uma lista valida de Cambio
+	 * @return Objeto Cambio
+	 */
+	private Cambio getCambio() {
+		//@TODO colocar filtros
+		System.out.println("Escolha um Cambio disponivel");
+		this.mostraOpcao(Cambio.class);
+		System.out.println("Informe uma ID(numeral)");
+		return Cambio.valueOf(getGenericsEnumByCode(Cambio.class,this.sc.nextInt()));
+	}
+	
+	
+	
+	
+	
 	public static void main(String[] args) {
-		new Loja().adicionaMotoUsuario();
+		new Loja().adicionaCarroByTerminal();;
 	}
 
 	/**
@@ -90,7 +187,8 @@ public class Loja {
 	    	}
 	    }
 	    //@TODO adicionar filtros
-	    return "not found";
+	    System.out.println("Valor não encotnrado");
+	    return "Erro";
 	}
 	
 	// Get e Set
