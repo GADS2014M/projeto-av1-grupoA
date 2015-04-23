@@ -237,7 +237,7 @@ public class Loja {
 	 * pesquisaMotoByTerminal, Pesquisa uma moto usando todos os atributos
 	 * @return ArrayList de moto com todos os resultados
 	 * */
-	private ArrayList<Carro> pesquisaMotoByTerminal() {
+	private ArrayList<Motocicleta> pesquisaMotoByTerminal() {
 		ArrayList<Motocicleta> resultadoPesquisa = new ArrayList<>();
 		Motocicleta motoTeste =  getMotoValues();
 		for (Motocicleta moto : this.motocicletas) {
@@ -246,6 +246,21 @@ public class Loja {
 		}
 		//@TODO Adicionar filtros, null
 		return resultadoPesquisa;
+	}
+	
+	
+	private void listaCarros() {
+		for (Carro carro: this.carros){
+			System.out.println(carro);
+		}
+		
+	}
+	
+	private void listaMoto() {
+		for (Motocicleta moto: this.motocicletas){
+			System.out.println(moto);
+		}
+		
 	}
 
 	

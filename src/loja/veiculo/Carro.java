@@ -115,6 +115,18 @@ public class Carro {
 			return false;
 		return true;
 	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "Carro [chassi=" + chassi + ", montadora=" + montadora
+				+ ", modelo=" + modelo + ", tipo=" + tipo + ", cor=" + cor
+				+ ", motorizacao=" + motorizacao + ", cambio=" + cambio
+				+ ", valor=" + valor + "]";
+	}
+
+
 
 	// get e set
 	public Chassi getChassi() {
