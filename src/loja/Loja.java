@@ -29,13 +29,6 @@ public class Loja {
 	private Scanner sc = new Scanner(System.in);
 
 	/**
-	 * Construtor de Loja
-	 * */
-		Loja(){
-			
-	}
-
-	/**
 	 * adicionaCarro Adiciona objeto carro a lista
 	 * primitiva de carros
 	 * @param carro, objeto carro
