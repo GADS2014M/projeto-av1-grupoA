@@ -164,8 +164,8 @@ public class Loja {
 	
 	
 	public static void main(String[] args) {
-		new Loja().adicionaCarroByTerminal();
-		new Loja().adicionaMotoByTerminal();
+		//new Loja().adicionaCarroByTerminal();
+		//new Loja().adicionaMotoByTerminal();
 	}
 
 	/**
@@ -196,6 +196,30 @@ public class Loja {
 	    return "Erro";
 	}
 	
+	/**/
+	private ArrayList<Carro> buscaCarroByChassi() {
+		Chassi chassi = getChassi();
+		ArrayList<Carro> resultadoBuscaCarro = new ArrayList<>();
+		for (Carro carro: this.carros){
+			if(carro.getChassi() == chassi){
+				resultadoBuscaCarro.add(carro);
+			}
+		}
+		
+		return resultadoBuscaCarro;
+	}
+	
+	private ArrayList<Motocicleta> buscaMotoByChassi() {
+		Chassi chassi = getChassi();
+		ArrayList<Motocicleta> resultadoBuscaMoto = new ArrayList<>();
+		for (Motocicleta moto: this.motocicletas){
+			if(moto.getChassi() == chassi){
+				resultadoBuscaMoto.add(moto);
+			}
+		}
+		
+		return resultadoBuscaMoto;
+	}
 	
 	
 	/**/
