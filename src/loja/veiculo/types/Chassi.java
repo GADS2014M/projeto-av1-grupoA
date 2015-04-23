@@ -5,7 +5,7 @@ public enum Chassi {
 
 	private final int opcao;
 
-	private   Chassi(int escolha) {
+	private Chassi(int escolha) {
 		this.opcao = escolha;
 	}
 	

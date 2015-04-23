@@ -57,13 +57,29 @@ public class Loja {
 		Modelo modelo = getModelo();
 		Tipo tipo = getTipo();
 		Cor cor = getCor();
-		System.out.println("Qual motorização ?");
+		System.out.println("Qual motorização?");
 		float motorizacao = this.sc.nextFloat();
-		Cambio cambio =getCambio();
+		Cambio cambio = getCambio();
 		System.out.println("Qual valor do carro?");
 		float valor = this.sc.nextFloat();
 		Carro carro =  Carro.criaCarro(chassi, montadora, modelo, tipo, cor, motorizacao, cambio, valor);
 		adicionaCarro(carro);
+	}
+	
+	public void adicionaMotoByTerminal(){
+		Chassi chassi = getChassi();
+		Montadora montadora = getMontadora();
+		Modelo modelo = getModelo();
+		Tipo tipo = getTipo();
+		Cor cor = getCor();
+		System.out.println("Qual a capacidade do tanque?");
+		byte capacidadeDoTanque  = (byte) this.sc.nextInt();
+		System.out.println("Qual a cilindadra?");
+		int cilindrada = this.sc.nextInt();
+		System.out.println("Qual valor da moto?");
+		float valor = this.sc.nextFloat();
+		Motocicleta moto = Motocicleta.criaMoto(chassi, montadora, modelo, tipo, cor, cilindrada, capacidadeDoTanque, valor);
+		adicionaMoto(moto);
 	}
 
 	/**
@@ -147,11 +163,9 @@ public class Loja {
 	}
 	
 	
-	
-	
-	
 	public static void main(String[] args) {
-		new Loja().adicionaCarroByTerminal();;
+		new Loja().adicionaCarroByTerminal();
+		new Loja().adicionaMotoByTerminal();
 	}
 
 	/**
