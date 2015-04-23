@@ -67,6 +67,15 @@ public class Motocicleta {
 	}
 	
               
+	@Override
+	public String toString() {
+		return "Motocicleta [chassi=" + chassi + ", montadora=" + montadora
+				+ ", modelo=" + modelo + ", tipo=" + tipo + ", cor=" + cor
+				+ ", cilindrada=" + cilindrada + ", capacidadeDoTanque="
+				+ capacidadeDoTanque + ", valor=" + valor + "]";
+	}
+
+
 	// get e set
 	public Chassi getChassi() {
 		return chassi;
