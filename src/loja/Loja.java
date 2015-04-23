@@ -52,6 +52,15 @@ public class Loja {
 	}
 	
 	public void adicionaCarroByTerminal(){
+		Carro carro = getCarroValues();
+		adicionaCarro(carro);
+	}
+
+	/**
+	 * getCarroValues, coleta todos itens de carro
+	 * @return Objeto carro
+	 */
+	private Carro getCarroValues() {
 		Chassi chassi = getChassi();
 		Montadora montadora = getMontadora();
 		Modelo modelo = getModelo();
@@ -63,10 +72,19 @@ public class Loja {
 		System.out.println("Qual valor do carro?");
 		float valor = this.sc.nextFloat();
 		Carro carro =  Carro.criaCarro(chassi, montadora, modelo, tipo, cor, motorizacao, cambio, valor);
-		adicionaCarro(carro);
+		return carro;
 	}
 	
 	public void adicionaMotoByTerminal(){
+		Motocicleta moto = getMotoValues();
+		adicionaMoto(moto);
+	}
+
+	/**
+	 * getMotoValues, coleta todos itens de moto
+	 * @return objeto moto
+	 */
+	private Motocicleta getMotoValues() {
 		Chassi chassi = getChassi();
 		Montadora montadora = getMontadora();
 		Modelo modelo = getModelo();
@@ -79,7 +97,7 @@ public class Loja {
 		System.out.println("Qual valor da moto?");
 		float valor = this.sc.nextFloat();
 		Motocicleta moto = Motocicleta.criaMoto(chassi, montadora, modelo, tipo, cor, cilindrada, capacidadeDoTanque, valor);
-		adicionaMoto(moto);
+		return moto;
 	}
 
 	/**
@@ -198,21 +216,40 @@ public class Loja {
 	
 	
 	
-	/**/
-	private void pesquisaCarro(Chassi chassi,
-			Montadora montadora,
-			Modelo modelo,
-			Tipo tipo,
-			Cor cor,             
-			float motorizacao,   
-			Cambio cambio,       
-			float valor) {
-		
-		
-		
-		
-
+	
+	
+	/**
+	 * pesquisaCarroByTerminal, Pesquisa um carro usando todos os atributos
+	 * @return ArrayList de carro com todos os resultados
+	 * */
+	private ArrayList<Carro> pesquisaCarroByTerminal() {
+		ArrayList<Carro> resultadoPesquisa = new ArrayList<>();
+		Carro carroTeste =  getCarroValues();
+		for (Carro carro : this.carros) {
+			if (carro.equals(carroTeste))
+				resultadoPesquisa.add(carro);
+		}
+		//@TODO Adicionar filtros, null
+		return resultadoPesquisa;
 	}
+	
+	/**
+	 * pesquisaMotoByTerminal, Pesquisa uma moto usando todos os atributos
+	 * @return ArrayList de moto com todos os resultados
+	 * */
+	private ArrayList<Carro> pesquisaMotoByTerminal() {
+		ArrayList<Motocicleta> resultadoPesquisa = new ArrayList<>();
+		Motocicleta motoTeste =  getMotoValues();
+		for (Motocicleta moto : this.motocicletas) {
+			if (moto.equals(motoTeste))
+				resultadoPesquisa.add(moto);
+		}
+		//@TODO Adicionar filtros, null
+		return resultadoPesquisa;
+	}
+
+	
+	
 	
 	// Get e Set
 	public String getEndereco() {

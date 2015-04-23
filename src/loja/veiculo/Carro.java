@@ -67,6 +67,55 @@ public class Carro {
 
 	}
 	
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cambio == null) ? 0 : cambio.hashCode());
+		result = prime * result + ((chassi == null) ? 0 : chassi.hashCode());
+		result = prime * result + ((cor == null) ? 0 : cor.hashCode());
+		result = prime * result + ((modelo == null) ? 0 : modelo.hashCode());
+		result = prime * result
+				+ ((montadora == null) ? 0 : montadora.hashCode());
+		result = prime * result + Float.floatToIntBits(motorizacao);
+		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		result = prime * result + Float.floatToIntBits(valor);
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Carro other = (Carro) obj;
+		if (cambio != other.cambio)
+			return false;
+		if (chassi != other.chassi)
+			return false;
+		if (cor != other.cor)
+			return false;
+		if (modelo != other.modelo)
+			return false;
+		if (montadora != other.montadora)
+			return false;
+		if (Float.floatToIntBits(motorizacao) != Float
+				.floatToIntBits(other.motorizacao))
+			return false;
+		if (tipo != other.tipo)
+			return false;
+		if (Float.floatToIntBits(valor) != Float.floatToIntBits(other.valor))
+			return false;
+		return true;
+	}
+
 	// get e set
 	public Chassi getChassi() {
 		return chassi;
