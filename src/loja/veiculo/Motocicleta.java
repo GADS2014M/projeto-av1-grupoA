@@ -58,6 +58,7 @@ public class Motocicleta {
 		Motocicleta moto = new Motocicleta();
 		moto.setChassi(chassi);
 		moto.setMontadora(montadora);
+		moto.setModelo(modelo);
 		moto.setTipo(tipo);
 		moto.setCor(cor);
 		moto.setCilindrada(cilindrada);
@@ -73,6 +74,53 @@ public class Motocicleta {
 				+ ", modelo=" + modelo + ", tipo=" + tipo + ", cor=" + cor
 				+ ", cilindrada=" + cilindrada + ", capacidadeDoTanque="
 				+ capacidadeDoTanque + ", valor=" + valor + "]";
+	}
+	
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + capacidadeDoTanque;
+		result = prime * result + ((chassi == null) ? 0 : chassi.hashCode());
+		result = prime * result + cilindrada;
+		result = prime * result + ((cor == null) ? 0 : cor.hashCode());
+		result = prime * result + ((modelo == null) ? 0 : modelo.hashCode());
+		result = prime * result
+				+ ((montadora == null) ? 0 : montadora.hashCode());
+		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		result = prime * result + Float.floatToIntBits(valor);
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Motocicleta other = (Motocicleta) obj;
+		if (capacidadeDoTanque != other.capacidadeDoTanque)
+			return false;
+		if (chassi != other.chassi)
+			return false;
+		if (cilindrada != other.cilindrada)
+			return false;
+		if (cor != other.cor)
+			return false;
+		if (modelo != other.modelo)
+			return false;
+		if (montadora != other.montadora)
+			return false;
+		if (tipo != other.tipo)
+			return false;
+		if (Float.floatToIntBits(valor) != Float.floatToIntBits(other.valor))
+			return false;
+		return true;
 	}
 
 
