@@ -13,8 +13,8 @@ import loja.veiculo.types.Modelo;
 import loja.veiculo.types.Montadora;
 import loja.veiculo.types.Tipo;
 
-public class MenuTerminal implements Menu{
-	public final static int  SPACES=10;
+public class MenuTerminal implements Menu {
+	public final static int  SPACES=100;
 	public final static int SEGUNDO=1000;
 	private Loja loja = new Loja();
 	private Scanner sc = new Scanner(System.in);
@@ -40,7 +40,7 @@ public class MenuTerminal implements Menu{
 				+ "7) Listar estoque de carros\n"
 				+ "8) Listar estoque de motos\n"
 				+ "9) Sair");
-		
+
 		System.out.println("Escolha uma opção válida:");
 		int escolha = sc.nextInt();
 		switch(escolha){
@@ -48,31 +48,31 @@ public class MenuTerminal implements Menu{
 		case 1:
 			this.adicionaCarroByTerminal();
 			break;
-			
+
 		case 2:
 			this.adicionaMotoByTerminal();
 			break;
-			
+
 		case 3:
 			this.pesquisaCarroByAtributes();
 			break;
-			
+
 		case 4:
 			this.pesquisaMotoByAtributes();
 			break;
-			
+
 		case 5:
 			this.buscaCarroByChassi();
 			break;
-			
+
 		case 6:
 			this.buscaMotoByChassi();
 			break;
-			
+
 		case 7:
 			this.listarEstoquedeCarros();
 			break;
-			
+
 		case 8:
 			this.listarEstoquedeMotos();
 			break;
@@ -105,24 +105,8 @@ public class MenuTerminal implements Menu{
 		/**
 		 * usa Cls para windows e clear em unix (:
 		 * */
-		 try
-		    {
-		        final String os = System.getProperty("os.name");
-
-		        if (os.contains("Windows"))
-		        {
-		            Runtime.getRuntime().exec("cls");
-		        }
-		        else
-		        {
-		            Runtime.getRuntime().exec("clear");
-		        }
-		    }
-		    catch (final Exception e)
-		    {
-		    	//TODO colocar filtro, exception
-		        System.out.println("So lamento !");
-		    }
+		for(int i=0;i<SPACES;i++)
+			System.out.println("\n");
 
 	}
 
@@ -385,11 +369,6 @@ public class MenuTerminal implements Menu{
 		this.loja = loja;
 	}
 
-
 	// fim get e set
-
-
-
-
 
 }
