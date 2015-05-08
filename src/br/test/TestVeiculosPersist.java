@@ -1,4 +1,5 @@
-package br.model;
+package br.test;
+
 import java.math.BigDecimal;
 
 import javax.persistence.EntityManager;
@@ -7,12 +8,12 @@ import javax.persistence.Persistence;
 
 import org.junit.Test;
 
+import br.model.Veiculo;
 import br.model.enums.Chassi;
 import br.model.enums.Cor;
 import br.model.enums.Modelo;
 import br.model.enums.Montadora;
 import br.model.enums.Tipo;
-
 
 public class TestVeiculosPersist {
 	

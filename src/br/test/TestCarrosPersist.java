@@ -1,4 +1,4 @@
-package br.model;
+package br.test;
 
 import org.junit.Test;
 
