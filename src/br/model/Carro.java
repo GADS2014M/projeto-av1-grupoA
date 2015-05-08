@@ -6,20 +6,24 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import br.model.enums.Cambio;
 import br.model.enums.Motorizacao;
 
 @Entity
+@Table(name="carro")
 public class Carro {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@OneToOne
+	@ManyToOne
 	private Veiculo veiculo;
 
 	@Enumerated(EnumType.STRING)
@@ -36,7 +40,6 @@ public class Carro {
 		this.id = id;
 	}
 
-	
 	public Veiculo getVeiculo() {
 		return veiculo;
 	}
@@ -61,4 +64,9 @@ public class Carro {
 		this.cambio = cambio;
 	}
 
+	
+		
+	
+
+	
 }

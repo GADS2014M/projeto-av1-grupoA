@@ -1,27 +1,32 @@
 package br.model;
 
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="loja")
 public class Loja {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
 	private String nome;
-	
 	private String endereco;
 	
 	@OneToMany
-	private Moto moto;
+	@Column(name="moto_id")
+	private List<Moto> moto;
 	
 	@OneToMany
-	private Carro carro;
+	@Column(name="carro_id")
+	private List<Carro> carro;
 
 	public int getId() {
 		return id;
@@ -47,22 +52,25 @@ public class Loja {
 		this.endereco = endereco;
 	}
 
-	public Moto getMoto() {
+	public List<Moto> getMoto() {
 		return moto;
 	}
 
-	public void setMoto(Moto moto) {
+	public void setMoto(List<Moto> moto) {
 		this.moto = moto;
 	}
 
-	public Carro getCarro() {
+	public List<Carro> getCarro() {
 		return carro;
 	}
 
-	public void setCarro(Carro carro) {
+	public void setCarro(List<Carro> carro) {
 		this.carro = carro;
 	}
-	
+
+
+
+		
 	
 	
 }

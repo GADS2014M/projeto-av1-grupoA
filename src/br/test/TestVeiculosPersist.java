@@ -32,7 +32,6 @@ public class TestVeiculosPersist {
 		EntityManagerFactory emf = Persistence
 		 		.createEntityManagerFactory("projeto");
 
-
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(veiculo);
