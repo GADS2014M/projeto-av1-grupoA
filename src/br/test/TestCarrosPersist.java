@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import br.model.Carro;
@@ -20,11 +19,10 @@ import br.model.enums.Motorizacao;
 import br.model.enums.Tipo;
 
 public class TestCarrosPersist {
-	
-	
+
 	@Test
-	public void criaObjetoCarroComVeiculo(){
-		
+	public void criaObjetoCarroComVeiculo() {
+
 		// Cria um veiculo
 		Veiculo veiculo = new Veiculo();
 		veiculo.setChassi(Chassi.MODELOA);
@@ -33,30 +31,26 @@ public class TestCarrosPersist {
 		veiculo.setTipo(Tipo.TIPOA);
 		veiculo.setCor(Cor.AZUL);
 		veiculo.setPreco(new BigDecimal(500));
-		
-		
+
 		// cria um carro
 		Carro carro = new Carro();
 		carro.setCambio(Cambio.MODELOA);
 		carro.setMotorizacao(Motorizacao.TIPOA);
 		carro.setVeiculo(veiculo);
-		
-		
+
 		// abre conexão com banco
 		EntityManagerFactory emf = Persistence
-		 		.createEntityManagerFactory("projeto");
+				.createEntityManagerFactory("test_projeto");
 
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		
-		
+
 		// Insert veiculo
 		em.persist(veiculo);
-		
-		
+
 		// insert carro
 		em.persist(carro);
-		
+
 		// fecha conexões
 		em.getTransaction().commit();
 		em.close();
