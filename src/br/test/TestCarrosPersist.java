@@ -25,16 +25,16 @@ public class TestCarrosPersist {
 
 		// Cria um veiculo
 		Veiculo veiculo = new Veiculo();
-		veiculo.setChassi(Chassi.MODELOA);
-		veiculo.setMontadora(Montadora.MODELOA);
+		veiculo.setChassi(Chassi.TIPOA);
+		veiculo.setMontadora(Montadora.FIAT);
 		veiculo.setModelo(Modelo.MODELOA);
-		veiculo.setTipo(Tipo.TIPOA);
+		veiculo.setTipo(Tipo.COUPE);
 		veiculo.setCor(Cor.AZUL);
 		veiculo.setPreco(new BigDecimal(500));
 
 		// cria um carro
 		Carro carro = new Carro();
-		carro.setCambio(Cambio.MODELOA);
+		carro.setCambio(Cambio.AUTOMATICO);
 		carro.setMotorizacao(Motorizacao.TIPOA);
 		carro.setVeiculo(veiculo);
 

@@ -22,10 +22,10 @@ public class TestMotosPersist {
 	public void criaMotos() {
 		// Cria um veiculo
 		Veiculo veiculo = new Veiculo();
-		veiculo.setChassi(Chassi.MODELOA);
-		veiculo.setMontadora(Montadora.MODELOA);
+		veiculo.setChassi(Chassi.TIPOA);
+		veiculo.setMontadora(Montadora.HONDA);
 		veiculo.setModelo(Modelo.MODELOA);
-		veiculo.setTipo(Tipo.TIPOA);
+		veiculo.setTipo(Tipo.HATCH);
 		veiculo.setCor(Cor.AZUL);
 		veiculo.setPreco(new BigDecimal(300.354));
 

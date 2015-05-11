@@ -4,26 +4,27 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class Db {
+public class DAO {
 
-	private final String defaultDb = "projeto";
+	private final String defaultDb = "test_projeto";
 	private EntityManagerFactory emf;
 	private EntityManager em;
-
 	 
-	 public Db(){
+	 
+	// cria uma nova conexão
+	 public EntityManager getConnection(){
 		 this.emf = Persistence.createEntityManagerFactory(this.defaultDb);
 		 this.em = emf.createEntityManager();
+		 this.em.getTransaction().begin();
+		 return this.em;
 	 }
-		
-	 
-
 	// metodos
 	public void commit() {
 		this.em.getTransaction().commit();
 	}
 	
-	private void close() {
+	public  void close() {
+		this.em.getTransaction().commit();
 		this.em.close();
 	}
 	
@@ -44,6 +45,7 @@ public class Db {
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}
+	
 
 	public String getDefaultDb() {
 		return defaultDb;
