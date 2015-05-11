@@ -24,7 +24,6 @@ import br.model.enums.Motorizacao;
 import br.model.enums.Tipo;
 
 public class Menu {
-	private static final int SEGUNDO = 1000;
 	private ModelLoja modelLoja = new ModelLoja();
 	private Scanner sc = new Scanner(System.in);
 
@@ -44,7 +43,7 @@ public class Menu {
 	}
 
 	/**
-	 * 
+	 *Escolhe uma loja para trabalhar
 	 */
 	private void escolheLoja() {
 
@@ -72,11 +71,11 @@ public class Menu {
 	}
 
 	/**
-	 * 
+	 *Metodo Base de coleta de String, usada em Junit
 	 */
 	private String getStringTerminal() {
-		Scanner sc = new Scanner(System.in);
-		String line = sc.nextLine();
+		ModelScanner input = new ModelScanner(System.in, System.out);
+		String line  = input.askLine();
 		return line;
 	}
 
@@ -201,18 +200,14 @@ public class Menu {
 
 		case 9:
 			System.out.println("Programa sendo fechado");
-			this.sleep(SEGUNDO);
 			System.exit(0);
 			break;
 		default:
 			System.out.println("Opção invalida");
-			this.sleep(SEGUNDO);
 			// Apaga tudo, mostra display
-			refresh();
 			displayPrincipal();
 		}
 		// Apaga tudo, mostra display
-		refresh();
 		displayPrincipal();
 
 	}
@@ -574,7 +569,7 @@ public class Menu {
 	 * 
 	 * @return Objeto chassi
 	 */
-	private Chassi getChassi() {
+	public Chassi getChassi() {
 		// @TODO colocar filtros
 		System.out.println("Escolha um chassi disponivel");
 		this.mostraOpcao(Chassi.class);
@@ -696,18 +691,8 @@ public class Menu {
 				return item.toString();
 			}
 		}
-		// @TODO adicionar filtros
 		 throw new RuntimeException("Id não encontrada");
 		
-	}
-
-	private void sleep(int segundo) {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void refresh() {
-
 	}
 
 	public ModelLoja getModelLoja() {
