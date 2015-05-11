@@ -111,7 +111,6 @@ public class Menu {
 		} catch (InputMismatchException e) {
 			System.out.println("Tipo invalido, ou inexistente,tente novamente");
 			return displayLojas();
-
 		}
 		return displayLojas();
 
@@ -149,15 +148,15 @@ public class Menu {
 		switch (escolha) {
 
 		case 1:
-			 this.adicionaCarroByTerminal();
+			this.adicionaCarroByTerminal();
 			break;
 
 		case 2:
-			 this.adicionaMotoByTerminal();
+			this.adicionaMotoByTerminal();
 			break;
 
 		case 3:
-			// this.pesquisaCarroByAtributes();
+			this.pesquisaCarroByAtributes();
 			break;
 
 		case 4:
@@ -198,6 +197,42 @@ public class Menu {
 
 	}
 
+	private void pesquisaCarroByAtributes() {
+
+		System.out.println("Vamos Pesquisar um carro");
+		System.out.println("Escolha um id valido,"
+				+ " ou 0 para não selecionar nada");
+		
+		mostraOpcao(Montadora.class);
+		String montadora = getGenericsEnumByCode(Montadora.class, this.sc.nextInt());
+		
+		mostraOpcao(Modelo.class);
+		String modelo = getGenericsEnumByCode(Modelo.class, this.sc.nextInt());
+		
+		mostraOpcao(Chassi.class);
+		String chassi = getGenericsEnumByCode(Chassi.class, this.sc.nextInt());
+		
+		mostraOpcao(Tipo.class);
+		String tipo = getGenericsEnumByCode(Tipo.class, this.sc.nextInt());
+		
+		mostraOpcao(Cor.class);
+		String cor = getGenericsEnumByCode(Cor.class, this.sc.nextInt());
+		
+		mostraOpcao(Motorizacao.class);
+		String motorizacao = getGenericsEnumByCode(Motorizacao.class, this.sc.nextInt());
+		
+		mostraOpcao(Cambio.class);
+		String cambio = getGenericsEnumByCode(Cambio.class, this.sc.nextInt());
+		
+		
+		System.out.println("Qual valor do carro?");
+		BigDecimal valor = new BigDecimal(this.sc.nextFloat());
+		
+		DAO db = new DAO();
+		Query query = db.getConnection().createQuery("");
+		
+	}
+
 	private void adicionaMotoByTerminal() {
 		Chassi chassi = getChassi();
 		Montadora montadora = getMontadora();
@@ -205,16 +240,17 @@ public class Menu {
 		Tipo tipo = getTipo();
 		Cor cor = getCor();
 		System.out.println("Qual a capacidade do tanque?");
-		int capacidadeDoTanque  = this.sc.nextInt();
+		int capacidadeDoTanque = this.sc.nextInt();
 		System.out.println("Qual a cilindadra?");
 		int cilindrada = this.sc.nextInt();
 		System.out.println("Qual valor da moto?");
 		BigDecimal valor = new BigDecimal(this.sc.nextFloat());
-		ModelMoto modelMoto = new ModelMoto(chassi, modelo, montadora, cor, tipo, valor, cilindrada, capacidadeDoTanque);
+		ModelMoto modelMoto = new ModelMoto(chassi, modelo, montadora, cor,
+				tipo, valor, cilindrada, capacidadeDoTanque);
 		modelMoto.saveAmazon();
-		//@TODO melhorar isso
+		// @TODO melhorar isso
 		this.getModelLoja().atualizaEstoque();
-		
+
 	}
 
 	private void adicionaCarroByTerminal() {
@@ -228,136 +264,144 @@ public class Menu {
 		Cambio cambio = getCambio();
 		System.out.println("Qual valor do carro?");
 		BigDecimal valor = new BigDecimal(this.sc.nextFloat());
-		ModelCarro carro = new ModelCarro(chassi, modelo, montadora, cor, tipo, valor, cambio, motorizacao);
+		ModelCarro carro = new ModelCarro(chassi, modelo, montadora, cor, tipo,
+				valor, cambio, motorizacao);
 		carro.saveAmazon();
-		//@TODO melhorar isso
+		// @TODO melhorar isso
 		this.getModelLoja().atualizaEstoque();
 	}
-	
+
 	/**
-	 * getChassi
-	 * Mostra uma lista valida de chassi
+	 * getChassi Mostra uma lista valida de chassi
+	 * 
 	 * @return Objeto chassi
 	 */
 	private Chassi getChassi() {
-		//@TODO colocar filtros
+		// @TODO colocar filtros
 		System.out.println("Escolha um chassi disponivel");
 		this.mostraOpcao(Chassi.class);
 		System.out.println("Informe uma ID(numeral)");
-		return Chassi.valueOf(getGenericsEnumByCode(Chassi.class,this.sc.nextInt()));
+		return Chassi.valueOf(getGenericsEnumByCode(Chassi.class,
+				this.sc.nextInt()));
 
 	}
 
 	/**
-	 * getMontadora
-	 * Mostra uma lista valida de Montadora
+	 * getMontadora Mostra uma lista valida de Montadora
+	 * 
 	 * @return Objeto Montadora
 	 */
 	private Montadora getMontadora() {
-		//@TODO colocar filtros
+		// @TODO colocar filtros
 		System.out.println("Escolha uma Montadora disponivel");
 		this.mostraOpcao(Montadora.class);
 		System.out.println("Informe uma ID(numeral)");
-		return Montadora.valueOf(getGenericsEnumByCode(Montadora.class,this.sc.nextInt()));
+		return Montadora.valueOf(getGenericsEnumByCode(Montadora.class,
+				this.sc.nextInt()));
 
 	}
 
 	/**
-	 * getModelo
-	 * Mostra uma lista valida de Modelo
+	 * getModelo Mostra uma lista valida de Modelo
+	 * 
 	 * @return Objeto Modelo
 	 */
 	private Modelo getModelo() {
-		//@TODO colocar filtros
+		// @TODO colocar filtros
 		System.out.println("Escolha um Modelo disponivel");
 		this.mostraOpcao(Modelo.class);
 		System.out.println("Informe uma ID(numeral)");
-		return Modelo.valueOf(getGenericsEnumByCode(Modelo.class,this.sc.nextInt()));
+		return Modelo.valueOf(getGenericsEnumByCode(Modelo.class,
+				this.sc.nextInt()));
 	}
-	
+
 	/**
-	 * getmotorizacao
-	 * Mostra uma lista valida de motorizacao
+	 * getmotorizacao Mostra uma lista valida de motorizacao
+	 * 
 	 * @return Objeto motorizacao
 	 */
 	private Motorizacao getMotorizacao() {
-		//@TODO colocar filtros
+		// @TODO colocar filtros
 		System.out.println("Escolha uma motorizacao disponivel");
 		this.mostraOpcao(Motorizacao.class);
 		System.out.println("Informe uma ID(numeral)");
-		return Motorizacao.valueOf(getGenericsEnumByCode(Motorizacao.class,this.sc.nextInt()));
+		return Motorizacao.valueOf(getGenericsEnumByCode(Motorizacao.class,
+				this.sc.nextInt()));
 	}
-	
 
 	/**
-	 * getTipo
-	 * Mostra uma lista valida de Tipo
+	 * getTipo Mostra uma lista valida de Tipo
+	 * 
 	 * @return Objeto Tipo
 	 */
 	private Tipo getTipo() {
-		//@TODO colocar filtros
+		// @TODO colocar filtros
 		System.out.println("Escolha um Tipo disponivel");
 		this.mostraOpcao(Tipo.class);
 		System.out.println("Informe uma ID(numeral)");
-		return Tipo.valueOf(getGenericsEnumByCode(Tipo.class,this.sc.nextInt()));
+		return Tipo
+				.valueOf(getGenericsEnumByCode(Tipo.class, this.sc.nextInt()));
 	}
 
 	/**
-	 * getCor
-	 * Mostra uma lista valida de Cor
+	 * getCor Mostra uma lista valida de Cor
+	 * 
 	 * @return Objeto Cor
 	 */
 	private Cor getCor() {
-		//@TODO colocar filtros
+		// @TODO colocar filtros
 		System.out.println("Escolha uma Cor disponivel");
 		this.mostraOpcao(Cor.class);
 		System.out.println("Informe uma ID(numeral)");
-		return Cor.valueOf(getGenericsEnumByCode(Cor.class,this.sc.nextInt()));
+		return Cor.valueOf(getGenericsEnumByCode(Cor.class, this.sc.nextInt()));
 	}
 
 	/**
-	 * getCambio
-	 * Mostra uma lista valida de Cambio
+	 * getCambio Mostra uma lista valida de Cambio
+	 * 
 	 * @return Objeto Cambio
 	 */
 	private Cambio getCambio() {
-		//@TODO colocar filtros
+		// @TODO colocar filtros
 		System.out.println("Escolha um Cambio disponivel");
 		this.mostraOpcao(Cambio.class);
 		System.out.println("Informe uma ID(numeral)");
-		return Cambio.valueOf(getGenericsEnumByCode(Cambio.class,getNumeroFromTerminal()));
+		return Cambio.valueOf(getGenericsEnumByCode(Cambio.class,
+				getNumeroFromTerminal()));
 	}
-
-
 
 	/**
 	 * mostraOpcao mostra opções de um enum de forma generica
-	 * @param enumClass classe de um enum
+	 * 
+	 * @param enumClass
+	 *            classe de um enum
 	 */
 	private <T extends Enum<T>> void mostraOpcao(Class<T> enumClass) {
 		for (Enum<T> item : enumClass.getEnumConstants()) {
 			// Mostra valor -> representacao
-			System.out.println(item.ordinal()+"->"+item.toString());
+			System.out.println((item.ordinal() + 1) + "->" + item.toString());
 		}
 	}
-
 
 	/**
 	 * getGenericsEnumByCode retorna um enum generico pelo codigo
-	 * @param enumClass classe de um enum
-	 * @param code valor que apontado pelo enum
+	 * 
+	 * @param enumClass
+	 *            classe de um enum
+	 * @param code
+	 *            valor que apontado pelo enum
 	 */
-	private  <T extends Enum<T>> String getGenericsEnumByCode(Class<T> enumClass,int code) {
+	private <T extends Enum<T>> String getGenericsEnumByCode(
+			Class<T> enumClass, int code) {
 		for (Enum<T> item : enumClass.getEnumConstants()) {
-			if (item.ordinal() ==code){
+			if (item.ordinal() == (code - 1)) {
 				return item.toString();
 			}
 		}
-		//@TODO adicionar filtros
+		// @TODO adicionar filtros
 		System.out.println("Valor não encotnrado");
 		return "Erro";
 	}
-
 
 	private void sleep(int segundo2) {
 		// TODO Auto-generated method stub
