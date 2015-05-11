@@ -1,6 +1,7 @@
 package br.aplicacao;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -10,7 +11,9 @@ import javax.persistence.Query;
 import br.aplicacao.modelos.ModelCarro;
 import br.aplicacao.modelos.ModelLoja;
 import br.aplicacao.modelos.ModelMoto;
+import br.model.Carro;
 import br.model.Loja;
+import br.model.Moto;
 import br.model.dao.DAO;
 import br.model.enums.Cambio;
 import br.model.enums.Chassi;
@@ -27,10 +30,8 @@ public class Menu {
 
 	public static void main(String[] args) {
 		Menu menu = new Menu();
-
 		// escolhe uma das lojas para usar
 		menu.escolheLoja();
-
 		// Mostra Qual foi a loja selecionada
 		System.out.println("Bem vindo na loja "
 				+ menu.getModelLoja().getLoja().getNome());
@@ -113,7 +114,6 @@ public class Menu {
 			return displayLojas();
 		}
 		return displayLojas();
-
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class Menu {
 
 	public void displayPrincipal() {
 
-		// Listando todas opções do programa
+		//Listando todas opções do programa
 		System.out.println("1) Adicionar carro\n" + "2) Adicionar moto\n"
 				+ "3) Pesquisar carro\n" + "4) Pesquisar moto\n"
 				+ "5) Buscar carro pelo chassi\n"
@@ -160,23 +160,43 @@ public class Menu {
 			break;
 
 		case 4:
-			// this.pesquisaMotoByAtributes();
+			 this.pesquisaMotoByAtributes();
 			break;
 
 		case 5:
-			// this.buscaCarroByChassi();
+			// TODO Refactor need !
+			this.getModelLoja().atualizaEstoque();
+			Chassi chassi = getChassi();
+			for(Carro carro: this.getModelLoja().getCarros())
+				if(carro.getVeiculo().getChassi() == chassi)
+					System.out.println(carro);
+			
 			break;
 
 		case 6:
-			// this.buscaMotoByChassi();
+			// TODO Refactor need !
+			this.getModelLoja().atualizaEstoque();
+			Chassi chMoto = getChassi();
+			for(Moto moto: this.getModelLoja().getMotos())
+				if(moto.getVeiculo().getChassi() == chMoto)
+					System.out.println(moto);
+			
 			break;
 
 		case 7:
-			// this.listarEstoquedeCarros();
+			// lista carros
+			this.getModelLoja().atualizaEstoque();
+			for (Carro carro: this.getModelLoja().getCarros()){
+				System.out.println(carro);
+			}
 			break;
 
 		case 8:
-			// this.listarEstoquedeMotos();
+			// lista motos
+			this.getModelLoja().atualizaEstoque();
+			for (Moto moto: this.getModelLoja().getMotos()){
+				System.out.println(moto);
+			}
 			break;
 
 		case 9:
@@ -197,40 +217,318 @@ public class Menu {
 
 	}
 
+	private void pesquisaMotoByAtributes() {
+		System.out.println("Vamos Pesquisar um carro");
+		this.getModelLoja().atualizaEstoque();
+		List<Moto> motos = this.getModelLoja().getMotos();
+
+		if (motos.size() == 0)
+			throw new RuntimeException("Não há Resultados");
+
+		try {
+			Chassi chassi = getChassi();
+			ArrayList<Moto> tempCarros = new ArrayList<Moto>();
+			for (Moto moto : motos) {
+				if (moto.getVeiculo().getChassi() == chassi)
+					tempCarros.add(moto);
+
+			}
+			motos = tempCarros;
+		} catch (Exception e) {
+			System.out.println("Filtro ignorado");
+
+		}
+
+		if (motos.size() == 0)
+			throw new RuntimeException("Não há Resultados");
+
+		try {
+			Montadora montadora = getMontadora();
+			ArrayList<Moto> tempMotos = new ArrayList<Moto>();
+			for (Moto moto : motos) {
+				if (moto.getVeiculo().getMontadora() == montadora)
+					tempMotos.add(moto);
+
+			}
+			motos = tempMotos;
+		} catch (Exception e) {
+			System.out.println("Filtro ignorado");
+
+		}
+
+		if (motos.size() == 0)
+			throw new RuntimeException("Não há Resultados");
+
+		try {
+			Modelo modelo = getModelo();
+			ArrayList<Moto> tempMotos = new ArrayList<Moto>();
+			for (Moto moto : motos) {
+				if (moto.getVeiculo().getModelo() == modelo)
+					tempMotos.add(moto);
+
+			}
+			motos = tempMotos;
+		} catch (Exception e) {
+			System.out.println("Filtro ignorado");
+
+		}
+
+		if (motos.size() == 0)
+			throw new RuntimeException("Não há Resultados");
+
+		try {
+			Tipo tipo = getTipo();
+			ArrayList<Moto> tempMotos = new ArrayList<Moto>();
+			for (Moto moto : motos) {
+				if (moto.getVeiculo().getTipo() == tipo)
+					tempMotos.add(moto);
+
+			}
+			motos = tempMotos;
+		} catch (Exception e) {
+			System.out.println("Filtro ignorado");
+
+		}
+
+		if (motos.size() == 0)
+			throw new RuntimeException("Não há Resultados");
+
+		try {
+			Cor cor = getCor();
+			ArrayList<Moto> tempMotos = new ArrayList<Moto>();
+			for (Moto moto : motos) {
+				if (moto.getVeiculo().getCor() == cor)
+					tempMotos.add(moto);
+
+			}
+			motos = tempMotos;
+		} catch (Exception e) {
+			System.out.println("Filtro ignorado");
+
+		}
+		
+		if (motos.size() == 0)
+			throw new RuntimeException("Não há Resultados");
+
+		
+		
+		try {
+			System.out.println("Qual a capacidade do tanque?");
+			int capacidadeDoTanque = this.sc.nextInt();
+			if (capacidadeDoTanque == 0)
+				throw new RuntimeException("Valor Scape");
+			ArrayList<Moto> tempMotos = new ArrayList<Moto>();
+			for (Moto moto : motos) {
+				if (moto.getCapacidadeTanque() == capacidadeDoTanque)
+					tempMotos.add(moto);
+
+			}
+			motos = tempMotos;
+		} catch (Exception e) {
+			System.out.println("Filtro ignorado");
+
+		}
+		
+		if (motos.size() == 0)
+			throw new RuntimeException("Não há Resultados");
+		
+		
+		try {
+			System.out.println("Qual a cilindadra?");
+			int cilindrada = this.sc.nextInt();
+			if (cilindrada == 0)
+				throw new RuntimeException("Valor Scape");
+			ArrayList<Moto> tempMotos = new ArrayList<Moto>();
+			for (Moto moto : motos) {
+				if (moto.getCilindrada() == cilindrada)
+					tempMotos.add(moto);
+
+			}
+			motos = tempMotos;
+		} catch (Exception e) {
+			System.out.println("Filtro ignorado");
+
+		}
+		
+		if (motos.size() == 0)
+			throw new RuntimeException("Não há Resultados");
+		
+		try {
+			System.out.println("Qual valor do carro?");
+			BigDecimal valor = new BigDecimal(this.sc.nextFloat());
+			if (valor.intValue() == 0)
+				throw new RuntimeException("0 é valor de scape");
+			ArrayList<Moto> tempMotos = new ArrayList<Moto>();
+			for (Moto moto : motos) {
+				if (moto.getVeiculo().getPreco() == valor)
+					tempMotos.add(moto);
+			}
+			motos = tempMotos;
+		} catch (Exception e) {
+			System.out.println("Filtro ignorado");
+
+		}
+
+		if (motos.size() == 0)
+			throw new RuntimeException("Não há Resultados");
+		
+		for (Moto moto : motos) {
+			System.out.println(moto);
+		}
+		
+	}
+
 	private void pesquisaCarroByAtributes() {
 
 		System.out.println("Vamos Pesquisar um carro");
-		System.out.println("Escolha um id valido,"
-				+ " ou 0 para não selecionar nada");
-		
-		mostraOpcao(Montadora.class);
-		String montadora = getGenericsEnumByCode(Montadora.class, this.sc.nextInt());
-		
-		mostraOpcao(Modelo.class);
-		String modelo = getGenericsEnumByCode(Modelo.class, this.sc.nextInt());
-		
-		mostraOpcao(Chassi.class);
-		String chassi = getGenericsEnumByCode(Chassi.class, this.sc.nextInt());
-		
-		mostraOpcao(Tipo.class);
-		String tipo = getGenericsEnumByCode(Tipo.class, this.sc.nextInt());
-		
-		mostraOpcao(Cor.class);
-		String cor = getGenericsEnumByCode(Cor.class, this.sc.nextInt());
-		
-		mostraOpcao(Motorizacao.class);
-		String motorizacao = getGenericsEnumByCode(Motorizacao.class, this.sc.nextInt());
-		
-		mostraOpcao(Cambio.class);
-		String cambio = getGenericsEnumByCode(Cambio.class, this.sc.nextInt());
-		
-		
-		System.out.println("Qual valor do carro?");
-		BigDecimal valor = new BigDecimal(this.sc.nextFloat());
-		
-		DAO db = new DAO();
-		Query query = db.getConnection().createQuery("");
-		
+		this.getModelLoja().atualizaEstoque();
+		List<Carro> carros = this.getModelLoja().getCarros();
+
+		if (carros.size() == 0)
+			throw new RuntimeException("Não há Resultados");
+
+		try {
+			Chassi chassi = getChassi();
+			ArrayList<Carro> tempCarros = new ArrayList<Carro>();
+			for (Carro carro : carros) {
+				if (carro.getVeiculo().getChassi() == chassi)
+					tempCarros.add(carro);
+
+			}
+			carros = tempCarros;
+		} catch (Exception e) {
+			System.out.println("Filtro ignorado");
+
+		}
+
+		if (carros.size() == 0)
+			throw new RuntimeException("Não há Resultados");
+
+		try {
+			Montadora montadora = getMontadora();
+			ArrayList<Carro> tempCarros = new ArrayList<Carro>();
+			for (Carro carro : carros) {
+				if (carro.getVeiculo().getMontadora() == montadora)
+					tempCarros.add(carro);
+
+			}
+			carros = tempCarros;
+		} catch (Exception e) {
+			System.out.println("Filtro ignorado");
+
+		}
+
+		if (carros.size() == 0)
+			throw new RuntimeException("Não há Resultados");
+
+		try {
+			Modelo modelo = getModelo();
+			ArrayList<Carro> tempCarros = new ArrayList<Carro>();
+			for (Carro carro : carros) {
+				if (carro.getVeiculo().getModelo() == modelo)
+					tempCarros.add(carro);
+
+			}
+			carros = tempCarros;
+		} catch (Exception e) {
+			System.out.println("Filtro ignorado");
+
+		}
+
+		if (carros.size() == 0)
+			throw new RuntimeException("Não há Resultados");
+
+		try {
+			Tipo tipo = getTipo();
+			ArrayList<Carro> tempCarros = new ArrayList<Carro>();
+			for (Carro carro : carros) {
+				if (carro.getVeiculo().getTipo() == tipo)
+					tempCarros.add(carro);
+
+			}
+			carros = tempCarros;
+		} catch (Exception e) {
+			System.out.println("Filtro ignorado");
+
+		}
+
+		if (carros.size() == 0)
+			throw new RuntimeException("Não há Resultados");
+
+		try {
+			Cor cor = getCor();
+			ArrayList<Carro> tempCarros = new ArrayList<Carro>();
+			for (Carro carro : carros) {
+				if (carro.getVeiculo().getCor() == cor)
+					tempCarros.add(carro);
+
+			}
+			carros = tempCarros;
+		} catch (Exception e) {
+			System.out.println("Filtro ignorado");
+
+		}
+
+		if (carros.size() == 0)
+			throw new RuntimeException("Não há Resultados");
+
+		try {
+			Motorizacao motorizacao = getMotorizacao();
+			ArrayList<Carro> tempCarros = new ArrayList<Carro>();
+			for (Carro carro : carros) {
+				if (carro.getMotorizacao() == motorizacao)
+					tempCarros.add(carro);
+
+			}
+			carros = tempCarros;
+		} catch (Exception e) {
+			System.out.println("Filtro ignorado");
+
+		}
+
+		if (carros.size() == 0)
+			throw new RuntimeException("Não há Resultados");
+
+		try {
+			Cambio cambio = getCambio();
+			ArrayList<Carro> tempCarros = new ArrayList<Carro>();
+			for (Carro carro : carros) {
+				if (carro.getCambio() == cambio)
+					tempCarros.add(carro);
+
+			}
+			carros = tempCarros;
+		} catch (Exception e) {
+			System.out.println("Filtro ignorado");
+
+		}
+
+		if (carros.size() == 0)
+			throw new RuntimeException("Não há Resultados");
+
+		try {
+			System.out.println("Qual valor do carro?");
+			BigDecimal valor = new BigDecimal(this.sc.nextFloat());
+			if (valor.intValue() == 0)
+				throw new RuntimeException("0 é valor de scape");
+			ArrayList<Carro> tempCarros = new ArrayList<Carro>();
+			for (Carro carro : carros) {
+				if (carro.getVeiculo().getPreco() == valor)
+					tempCarros.add(carro);
+			}
+			carros = tempCarros;
+		} catch (Exception e) {
+			System.out.println("Filtro ignorado");
+
+		}
+
+		if (carros.size() == 0)
+			throw new RuntimeException("Não há Resultados");
+
+		for (Carro carro : carros) {
+			System.out.println(carro);
+		}
+
 	}
 
 	private void adicionaMotoByTerminal() {
@@ -399,17 +697,16 @@ public class Menu {
 			}
 		}
 		// @TODO adicionar filtros
-		System.out.println("Valor não encotnrado");
-		return "Erro";
+		 throw new RuntimeException("Id não encontrada");
+		
 	}
 
-	private void sleep(int segundo2) {
+	private void sleep(int segundo) {
 		// TODO Auto-generated method stub
 
 	}
 
 	private void refresh() {
-		// TODO Auto-generated method stub
 
 	}
 

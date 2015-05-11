@@ -16,7 +16,7 @@ import br.model.enums.Cambio;
 import br.model.enums.Motorizacao;
 
 @Entity
-@Table(name="carro")
+@Table(name = "carro")
 public class Carro {
 
 	@Id
@@ -28,7 +28,7 @@ public class Carro {
 
 	@Enumerated(EnumType.STRING)
 	private Motorizacao motorizacao;
-	
+
 	@Enumerated(EnumType.STRING)
 	private Cambio cambio;
 
@@ -64,9 +64,12 @@ public class Carro {
 		this.cambio = cambio;
 	}
 
+	@Override
+	public String toString() {
+		return "Carro [id=" + id + ", veiculo=\n" + veiculo + ", motorizacao="
+				+ motorizacao + ", cambio=" + cambio + "]";
+	}
 	
-		
 	
 
-	
 }

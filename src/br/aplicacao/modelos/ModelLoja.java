@@ -88,5 +88,6 @@ public class ModelLoja {
 	public void setLoja(Loja loja) {
 		this.loja = loja;
 	}
+	
 
 }

@@ -1,4 +1,4 @@
-package br.test;
+package br.test.model;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

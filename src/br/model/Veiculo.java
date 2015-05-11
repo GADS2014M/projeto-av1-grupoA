@@ -103,4 +103,13 @@ public class Veiculo {
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
+
+	@Override
+	public String toString() {
+		return "Veiculo [id=" + id + ", chassi=" + chassi + ", montadora="
+				+ montadora + ", modelo=" + modelo + ", tipo=" + tipo
+				+ ", cor=" + cor + ", preco=" + preco + "]";
+	}
+	
+	
 }

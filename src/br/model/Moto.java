@@ -55,6 +55,14 @@ public class Moto {
 		this.capacidadeTanque = capacidadeTanque;
 	}
 
+	@Override
+	public String toString() {
+		return "Moto [id=" + id + ", veiculo=\n" + veiculo + ", cilindrada="
+				+ cilindrada + ", capacidadeTanque=" + capacidadeTanque + "]";
+	}
+	
+	
+
 
 
 }
