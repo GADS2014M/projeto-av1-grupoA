@@ -4,6 +4,7 @@
 
 * Isvaldo fernandes
 * Yan carvalhal
+* Rodrigo Paiva
 
 
 ## Video
