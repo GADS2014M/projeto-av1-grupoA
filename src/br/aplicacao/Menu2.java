@@ -1,9 +1,8 @@
 package br.aplicacao;
 
+import br.aplicacao.loja.CriadorDeLoja;
+
 public class Menu2 {
-	public final static int CRIA = 1;
-	public final static int ESCOLHE = 2; 
-	private PerguntaParaUsuario pergunta;
 
 	
 	public Menu2(){
@@ -19,7 +18,7 @@ public class Menu2 {
 		int resposta = pergunta.criarOuEscolherLoja();
 		
 		if (resposta == CRIA)
-			System.out.println();
+			new CriadorDeLoja().criaComPerguntas();
 		else if (resposta == ESCOLHE)
 			System.out.println();
 		
