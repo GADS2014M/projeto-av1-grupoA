@@ -19,4 +19,14 @@ public class PerguntaParaUsuario {
 		return daTela.nextInt();
 	}
 
+	public String qualNomeDaLoja() {
+		naTela.mostraTexto("Qual Nome da loja ?");
+		return daTela.nextString();
+	}
+
+	public String qualEnderecoDaLoja() {
+		naTela.mostraTexto("Qual endereço da loja ?");
+		return daTela.nextString();
+	}
+
 }

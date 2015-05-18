@@ -2,12 +2,13 @@ package br.aplicacao.modelos;
 
 
 public class ModelLoja {
-	private String nome;
-	private String endereco;
+	protected String nome;
+	protected String endereco;
 	
-	
+	public ModelLoja(){
+		
+	}
 	public ModelLoja(String nome, String endereco) {
-		super();
 		this.nome = nome;
 		this.endereco = endereco;
 	}
