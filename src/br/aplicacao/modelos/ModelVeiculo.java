@@ -1,9 +1,5 @@
 package br.aplicacao.modelos;
 
-import java.math.BigDecimal;
-
-import br.model.Veiculo;
-import br.model.dao.DAO;
 import br.model.enums.Chassi;
 import br.model.enums.Cor;
 import br.model.enums.Modelo;
@@ -11,31 +7,51 @@ import br.model.enums.Montadora;
 import br.model.enums.Tipo;
 
 
-public abstract class ModelVeiculo extends DAO{
-	private Veiculo veiculo = new Veiculo();
-
-
-	ModelVeiculo(Chassi chassi,Modelo modelo,
-			Montadora montadora,
-			Cor cor,
-			Tipo tipo,
-			BigDecimal preco){
-		this.veiculo.setChassi(chassi);
-		this.veiculo.setModelo(modelo);
-		this.veiculo.setMontadora(montadora);
-		this.veiculo.setCor(cor);
-		this.veiculo.setTipo(tipo);
-		this.veiculo.setPreco(preco);
-	}
-	public void saveAmazon(){
+public abstract class ModelVeiculo {
+	private Chassi chassi;
+	private Montadora montadora;
+	private Modelo modelo;
+	private Tipo tipo;
+	private Cor cor;
+	
+	public ModelVeiculo(Chassi chassi, Montadora montadora, Modelo modelo,
+			Tipo tipo, Cor cor) {
+		super();
+		this.chassi = chassi;
+		this.montadora = montadora;
+		this.modelo = modelo;
+		this.tipo = tipo;
+		this.cor = cor;
 	}
 	
-	public Veiculo getVeiculo() {
-		return veiculo;
+	public Chassi getChassi() {
+		return chassi;
 	}
-
-	public void setVeiculo(Veiculo veiculo) {
-		this.veiculo = veiculo;
+	public void setChassi(Chassi chassi) {
+		this.chassi = chassi;
 	}
-
+	public Montadora getMontadora() {
+		return montadora;
+	}
+	public void setMontadora(Montadora montadora) {
+		this.montadora = montadora;
+	}
+	public Modelo getModelo() {
+		return modelo;
+	}
+	public void setModelo(Modelo modelo) {
+		this.modelo = modelo;
+	}
+	public Tipo getTipo() {
+		return tipo;
+	}
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
+	public Cor getCor() {
+		return cor;
+	}
+	public void setCor(Cor cor) {
+		this.cor = cor;
+	}
 }

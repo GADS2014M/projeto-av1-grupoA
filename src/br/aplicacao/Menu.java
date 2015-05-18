@@ -43,7 +43,7 @@ public class Menu {
 	}
 
 	/**
-	 *Escolhe uma loja para trabalhar
+	 * Escolhe uma loja para trabalhar
 	 */
 	private void escolheLoja() {
 
@@ -71,11 +71,11 @@ public class Menu {
 	}
 
 	/**
-	 *Metodo Base de coleta de String, usada em Junit
+	 * Metodo Base de coleta de String, usada em Junit
 	 */
 	private String getStringTerminal() {
-		ModelScanner input = new ModelScanner(System.in, System.out);
-		String line  = input.askLine();
+		Scanner sc = new Scanner(System.in);
+		String line = sc.nextLine();
 		return line;
 	}
 
@@ -133,7 +133,7 @@ public class Menu {
 
 	public void displayPrincipal() {
 
-		//Listando todas opções do programa
+		// Listando todas opções do programa
 		System.out.println("1) Adicionar carro\n" + "2) Adicionar moto\n"
 				+ "3) Pesquisar carro\n" + "4) Pesquisar moto\n"
 				+ "5) Buscar carro pelo chassi\n"
@@ -155,37 +155,45 @@ public class Menu {
 			break;
 
 		case 3:
-			this.pesquisaCarroByAtributes();
+			try {
+				this.pesquisaCarroByAtributes();
+			} catch (RuntimeException e) {
+				System.out.println("Não foi possivel pesquisar esse item\n" + e);
+			}
 			break;
 
 		case 4:
-			 this.pesquisaMotoByAtributes();
+			try {
+				this.pesquisaMotoByAtributes();
+			} catch (RuntimeException e) {
+				System.out.println("Não foi possivel pesquisar esse item\n" + e);
+			}
 			break;
 
 		case 5:
 			// TODO Refactor need !
 			this.getModelLoja().atualizaEstoque();
 			Chassi chassi = getChassi();
-			for(Carro carro: this.getModelLoja().getCarros())
-				if(carro.getVeiculo().getChassi() == chassi)
+			for (Carro carro : this.getModelLoja().getCarros())
+				if (carro.getVeiculo().getChassi() == chassi)
 					System.out.println(carro);
-			
+
 			break;
 
 		case 6:
 			// TODO Refactor need !
 			this.getModelLoja().atualizaEstoque();
 			Chassi chMoto = getChassi();
-			for(Moto moto: this.getModelLoja().getMotos())
-				if(moto.getVeiculo().getChassi() == chMoto)
+			for (Moto moto : this.getModelLoja().getMotos())
+				if (moto.getVeiculo().getChassi() == chMoto)
 					System.out.println(moto);
-			
+
 			break;
 
 		case 7:
 			// lista carros
 			this.getModelLoja().atualizaEstoque();
-			for (Carro carro: this.getModelLoja().getCarros()){
+			for (Carro carro : this.getModelLoja().getCarros()) {
 				System.out.println(carro);
 			}
 			break;
@@ -193,7 +201,7 @@ public class Menu {
 		case 8:
 			// lista motos
 			this.getModelLoja().atualizaEstoque();
-			for (Moto moto: this.getModelLoja().getMotos()){
+			for (Moto moto : this.getModelLoja().getMotos()) {
 				System.out.println(moto);
 			}
 			break;
@@ -301,12 +309,10 @@ public class Menu {
 			System.out.println("Filtro ignorado");
 
 		}
-		
+
 		if (motos.size() == 0)
 			throw new RuntimeException("Não há Resultados");
 
-		
-		
 		try {
 			System.out.println("Qual a capacidade do tanque?");
 			int capacidadeDoTanque = this.sc.nextInt();
@@ -323,11 +329,10 @@ public class Menu {
 			System.out.println("Filtro ignorado");
 
 		}
-		
+
 		if (motos.size() == 0)
 			throw new RuntimeException("Não há Resultados");
-		
-		
+
 		try {
 			System.out.println("Qual a cilindadra?");
 			int cilindrada = this.sc.nextInt();
@@ -344,10 +349,10 @@ public class Menu {
 			System.out.println("Filtro ignorado");
 
 		}
-		
+
 		if (motos.size() == 0)
 			throw new RuntimeException("Não há Resultados");
-		
+
 		try {
 			System.out.println("Qual valor do carro?");
 			BigDecimal valor = new BigDecimal(this.sc.nextFloat());
@@ -366,11 +371,11 @@ public class Menu {
 
 		if (motos.size() == 0)
 			throw new RuntimeException("Não há Resultados");
-		
+
 		for (Moto moto : motos) {
 			System.out.println(moto);
 		}
-		
+
 	}
 
 	private void pesquisaCarroByAtributes() {
@@ -691,8 +696,8 @@ public class Menu {
 				return item.toString();
 			}
 		}
-		 throw new RuntimeException("Id não encontrada");
-		
+		throw new RuntimeException("Id não encontrada");
+
 	}
 
 	public ModelLoja getModelLoja() {
