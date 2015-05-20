@@ -48,5 +48,12 @@ public class OutputClass {
 		mode.println(this.message);
 		erroMode(false);
 	}
+	
+	public void mostraErro(String message) {
+		this.message = message;
+		erroMode(true);
+		mode.println(this.message);
+		erroMode(false);
+	}
 
 }
