@@ -60,7 +60,7 @@ public class Menu {
 
 		case 2:
 			// escolha uma existente
-			Loja loja = this.displayLojas();
+			ModelLoja loja = this.displayLojas();
 			this.getModelLoja().setLoja(loja);
 			break;
 
@@ -88,11 +88,11 @@ public class Menu {
 		return numero;
 	}
 
-	public Loja displayLojas() {
+	public ModelLoja displayLojas() {
 
-		List<Loja> lojas = GetAllLojas();
+		List<ModelLoja> lojas = GetAllLojas();
 		System.out.println("Escolha o ID de uma loja");
-		for (Loja loja : lojas) {
+		for (ModelLoja loja : lojas) {
 			System.out.println(loja.getId() + " -> "
 					+ loja.getNome().toUpperCase());
 		}
@@ -101,7 +101,7 @@ public class Menu {
 		try {
 			Scanner sc = new Scanner(System.in);
 			int escolha = sc.nextInt();
-			for (Loja loja : lojas) {
+			for (ModelLoja loja : lojas) {
 				if (loja.getId() == escolha) {
 					return loja;
 				}
@@ -120,12 +120,12 @@ public class Menu {
 	 * 
 	 * @return Lojas
 	 */
-	private List<Loja> GetAllLojas() {
+	private List<ModelLoja> GetAllLojas() {
 		DAO db = new DAO();
 		// Query Estilo Hibernate, nome da tabela = nome da classe
 		Query createQuery = db.getConnection().createQuery("from Loja");
 		// cria uma lista com todas as lojas criadas
-		List<Loja> lojas = createQuery.getResultList();
+		List<ModelLoja> lojas = createQuery.getResultList();
 		// fecha conexão
 		db.close();
 		return lojas;

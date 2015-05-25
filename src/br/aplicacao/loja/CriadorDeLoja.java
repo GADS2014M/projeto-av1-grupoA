@@ -1,7 +1,9 @@
 package br.aplicacao.loja;
 
 import br.aplicacao.PerguntaParaUsuario;
-import br.aplicacao.modelos.ModelLoja;
+import br.model.Loja;
+import br.model.dao.DAO;
+
 
 public class CriadorDeLoja {
 
@@ -10,21 +12,21 @@ public class CriadorDeLoja {
 	 */
 
 	private PerguntaParaUsuario pergunta;
-	private ModelLoja loja;
+	private Loja loja;
 
 	/*
 	 * Construtor de Criador de loja
 	 */
 	public CriadorDeLoja() {
 		this.pergunta = new PerguntaParaUsuario();
-		this.loja = new ModelLoja();
+		this.loja = new Loja();
 	}
 
 	/**
 	 *  Cria loja fazendo perguntas ao usuario
 	 * @return Objeto Modelloja
 	 */
-	public ModelLoja criaComPerguntas() {
+	public Loja criaComPerguntas() {
 		String nome = this.pergunta.qualNomeDaLoja();
 		String endereco = this.pergunta.qualEnderecoDaLoja();
 		return this.nome(nome).em(endereco).salva().getLoja();
@@ -59,6 +61,9 @@ public class CriadorDeLoja {
 	 */
 	private CriadorDeLoja salva() {
 		// @TODO talvez aqui seja legal salvar no db
+		DAO db = new DAO();
+		db.getConnection().persist(getLoja());
+		db.close();
 		return this;
 	}
 
@@ -67,7 +72,7 @@ public class CriadorDeLoja {
 	 * 
 	 * @return retorna um objeto de modelLoja
 	 */
-	public ModelLoja getLoja() {
+	public Loja getLoja() {
 		return this.loja;
 	}
 

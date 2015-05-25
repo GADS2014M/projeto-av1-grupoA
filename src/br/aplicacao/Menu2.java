@@ -1,33 +1,33 @@
 package br.aplicacao;
 
-import br.aplicacao.loja.CriadorDeLoja;
+import br.aplicacao.loja.ConfiguradorDeLoja;
+import br.aplicacao.util.OutputClass;
+import br.model.Loja;
 
 public class Menu2 {
 
 	
+	public Loja loja;
+	private PerguntaParaUsuario pergunta;
+
+
 	public Menu2(){
 		this.pergunta = new PerguntaParaUsuario();
+		this.configuraLoja();
+		this.escolheOpcao();
 	}
 	
 	public static void main(String[] args) {
-		new Menu2().configuraLoja();
+		new Menu2();
 	}
 	
 	private void configuraLoja() {
-		
-		int resposta = pergunta.criarOuEscolherLoja();
-		
-		if (resposta == CRIA)
-			new CriadorDeLoja().criaComPerguntas();
-		else if (resposta == ESCOLHE)
-			System.out.println();
-		
-		
+		loja = new ConfiguradorDeLoja().pedeConfiguracaoDoUsuario();
+		new OutputClass().mostraTexto("Bem vindo a loja"+loja.getNome());
  	}
 	
 	
 	private void escolheOpcao(){
-		
 		
 	}
 }

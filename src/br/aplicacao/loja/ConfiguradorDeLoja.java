@@ -1,7 +1,13 @@
 package br.aplicacao.loja;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.aplicacao.PerguntaParaUsuario;
 import br.aplicacao.modelos.ModelLoja;
+import br.aplicacao.util.InputClass;
+import br.aplicacao.util.OutputClass;
+import br.model.Loja;
 
 public class ConfiguradorDeLoja {
 	public final static int CRIA = 1;
@@ -12,16 +18,21 @@ public class ConfiguradorDeLoja {
 		this.pergunta = new PerguntaParaUsuario();
 	}
 
-	public ModelLoja retornaLoja() {
+	public Loja pedeConfiguracaoDoUsuario() {
 		int resposta = pergunta.criarOuEscolherLoja();
-
 		if (resposta == CRIA)
 			return new CriadorDeLoja().criaComPerguntas();
-		else if (resposta == ESCOLHE)
-			//@TODO Cria uma classe para selecionar coisas do banco
-			System.out.println("dummy ");
+		else if (resposta == ESCOLHE){
+			ModelLoja lojaM = new ModelLoja(); 
+			List<Loja> lojas = new ArrayList<Loja>();
+			lojas = lojaM.getLojasDb();
+			lojaM.mostraLojasNaTela(lojas);
+			int escolha = new InputClass().nextInt();
+			return lojas.get(escolha);
+		}
 		else
-			System.out.println("perguntar denovo");
+			new OutputClass().mostraErro("Opção invalida");
+		return pedeConfiguracaoDoUsuario();
 	}
 
 }
