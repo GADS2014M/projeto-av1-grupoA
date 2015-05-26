@@ -1,5 +1,6 @@
 package br.aplicacao.modelos;
 
+import br.model.Veiculo;
 import br.model.enums.Chassi;
 import br.model.enums.Cor;
 import br.model.enums.Modelo;
@@ -7,7 +8,7 @@ import br.model.enums.Montadora;
 import br.model.enums.Tipo;
 
 
-public abstract class ModelVeiculo {
+public abstract class ModelVeiculo extends Veiculo{
 	private Chassi chassi;
 	private Montadora montadora;
 	private Modelo modelo;
